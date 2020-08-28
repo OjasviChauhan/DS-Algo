@@ -13,14 +13,26 @@ int mod2=67280421310721;
 int mod3=998244353;
 int INF=1e18;
 
+int countZeros(vector<int> nums, int z){
+        int count=0;
+        for(int i=0;i<=z;i++){
+            if(nums[i] == 0){
+                count++;
+            }
+        }
+        return count;
+}
+
 int subsetSum(int arr[],int sum,int n){
     int dp[n+1][sum+1];
 
     for(int j=0;j<=sum;j++){
     	dp[0][j] = 0;
     }
-	for(int i=0;i<=n;i++){
-        dp[i][0] = 1;
+    dp[0][0] = 1;
+    for(int i=1;i<=n;i++){
+	int zeros = countZeros(nums,i-1);
+        dp[i][0] = pow(2,zeros);
     }
     	
     for(int i=1;i<=n;i++){
@@ -33,13 +45,6 @@ int subsetSum(int arr[],int sum,int n){
     		}
     	}
     }
-    
-    // for (int i = 0; i <= n; i++) { 
-    //     for (int j = 0; j <= sum; j++) 
-    //         printf ("%4d", dp[i][j]); 
-    //     printf("\n"); 
-    // }
-    
     return dp[n][sum];
 }
  
