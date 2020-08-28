@@ -39,10 +39,10 @@ public:
     	    dp[0][j] = 0;
         }
         dp[0][0] = 1;
-	    for(int i=1;i<=n;i++){
-	        int zeros = countZeros(nums,i-1);
+	for(int i=1;i<=n;i++){
+	    int zeros = countZeros(nums,i-1);
             dp[i][0] = pow(2,zeros);
-	    }
+	}
 
         //code to fill rest of the table
         for(int i=1;i<=n;i++){
