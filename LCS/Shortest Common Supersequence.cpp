@@ -35,7 +35,7 @@ ios_base::sync_with_stdio(false);
         cin>>x>>y;
         int m = x.size();
         int n = y.size();
-        int ans = m + n - LCS(x,y,m,n);
+        int ans = m + n - LCS(x,y,m,n);	   // This is the main change.
         cout<<ans<<endl;
     }
 	return 0;
