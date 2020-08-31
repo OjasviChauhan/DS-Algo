@@ -28,7 +28,7 @@ int LCSubstring(string x,string y,int m,int n){
                 dp[i][j] = 1 + dp[i-1][j-1];
             }
             else{
-                dp[i][j] = 0;
+                dp[i][j] = 0;			// Code Variation.
             }
         }
     }
@@ -36,7 +36,7 @@ int LCSubstring(string x,string y,int m,int n){
     for(int i=0;i<=m;i++){
         for(int j=0;j<=n;j++){
             if(dp[i][j] > Max){
-                Max = dp[i][j];
+                Max = dp[i][j];			// Code Variation.
             }
         }
     }
