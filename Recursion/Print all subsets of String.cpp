@@ -9,9 +9,9 @@ void solve(string ip,string op){
     string op1 = op;
     string op2 = op;
     op2 += ip[0];
-    ip.erase(ip.begin()+0);
-    solve(ip,op1);
-    solve(ip,op2);
+
+    solve(ip.substr(1,ip.length()),op1);
+    solve(ip.substr(1,ip.length()),op2);
 }
 
 int main(){
