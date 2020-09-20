@@ -9,7 +9,6 @@
  *
  */
 DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
-    bool flag = true;
     DoublyLinkedListNode *temp = head;
     DoublyLinkedListNode *newnode = new DoublyLinkedListNode(data);
     if(data < head->data){
