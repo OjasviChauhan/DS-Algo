@@ -1,17 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define fl(i, a, b) for (int i = (a); i < (b); i++)
-#define flr(i, a, b) for(int i = (a); i >=(b); i--)
-#define itr(i, A) for(auto i=A.begin(); i != A.end(); ++i)
-#define pb push_back
-#define mp make_pair
 #define endl '\n'
 #define int long long
-typedef vector<int> VI;
 int mod1=1000000007;
-int mod2=67280421310721;
-int mod3=998244353;
-int INF=1e18;
 
 bool subsetSum(int arr[],int sum,int n){
     bool dp[n+1][sum+1];
