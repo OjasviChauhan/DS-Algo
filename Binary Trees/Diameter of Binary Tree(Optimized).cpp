@@ -1,5 +1,5 @@
-// The diameter of a tree (sometimes called the width) is the number of nodes on 
-// the longest path between two end nodes.
+// can be optimized by calculating the height in the same recursion 
+// rather than calling a height() separately. 
 
 #include<bits/stdc++.h>
 using namespace std;
