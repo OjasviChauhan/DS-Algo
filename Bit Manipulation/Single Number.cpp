@@ -23,3 +23,6 @@ public:
         return ans;
     }
 };
+
+// Time: O(N)
+// Space: O(1)
