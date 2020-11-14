@@ -22,7 +22,7 @@ public:
         TreeNode* rightAns = lowestCommonAncestor(root->right, p, q);
         
         // If both of the above calls return Non-NULL, then one key
-        // is present in once subtree and other is present in other,
+        // is present in one subtree and other is present in other,
         // So this node is the LCA
         if(leftAns!=NULL and rightAns!=NULL) return root;
         
