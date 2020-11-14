@@ -1,70 +1,33 @@
-// can be optimized by calculating the height in the same recursion 
-// rather than calling a height() separately. 
-
-#include<bits/stdc++.h>
-using namespace std;
-
-class node{
-    public:
-        int data;
-        node*left;
-        node*right;
-
-        node(int d){
-            data = d;
-            left = NULL;
-            right = NULL;
-        }
-};
-
-node* buildTree(){
-    int d;
-    cin>>d;
-
-    if(d == -1){
-        return NULL;
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int solve(TreeNode* root,int &res){
+        if(!root) return 0;
+        
+        int l = solve(root->left,res);
+        int r = solve(root->right,res);
+        
+        int temp = max(l,r)+1;
+        int ans = max(temp,l+r+1);
+        res = max(res,ans);
+        
+        return temp;
     }
-    node* root = new node(d);
-    root->left = buildTree();
-    root->right = buildTree();
-    return root;
-}
-
-class Pair{
-    public:
-        int height;
-        int diameter;
-};
-
-Pair diameterOpt(node* root){
-    Pair Node;
-    if(root==NULL){
-        Node.height = 0; 
-        Node.diameter = 0;
-        return Node;
+    
+    int diameterOfBinaryTree(TreeNode* root) {
+        if(!root) return 0;
+        int res = 0;
+        solve(root,res);
+        return res-1;
     }
-
-    Pair leftSubTree = diameterOpt(root->left);
-    Pair rightSubTree = diameterOpt(root->right);
-
-    Node.height = max(leftSubTree.height, rightSubTree.height) + 1;
-    Node.diameter = max(leftSubTree.height + rightSubTree.height + 1, 
-                    max(leftSubTree.diameter, rightSubTree.diameter));
-
-    return Node;
-}
-
-int main(){
-    node* root = buildTree();
-    Pair p = diameterOpt(root);
-    cout<<p.height<<endl;
-    cout<<p.diameter<<endl;
-    return 0;
-}
-
-/*
-Input:  8 10 1 -1 -1 6 9 -1 -1 7 -1 -1 3 -1 14 13 -1 -1 -1
-Output: 
-4
-7
-*/
+};
