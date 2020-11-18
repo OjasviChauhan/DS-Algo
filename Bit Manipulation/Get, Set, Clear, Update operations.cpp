@@ -7,7 +7,7 @@ bool isOdd(int n){
 
 int get_ith_bit(int n,int i){
     int mask = 1<<i;
-    int bit = (n & mask) > 0 ? 1 : 0;
+    int bit = (n&mask)>0 ? 1 : 0;
     return bit;
 }
 
