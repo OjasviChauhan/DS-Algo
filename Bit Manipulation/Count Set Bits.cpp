@@ -22,6 +22,7 @@ int countBitsFast(int n){
 int main() {
     int n;
     cin>>n;
-    cout<<countBits(n)<<endl;
-    cout<<countBitsFast(n)<<endl;
+    cout<<countBits(n)<<endl;               // method 1
+    cout<<countBitsFast(n)<<endl;           // method 2
+    cout<<__builtin_popcount(n)<<endl;      // method 3
 }
