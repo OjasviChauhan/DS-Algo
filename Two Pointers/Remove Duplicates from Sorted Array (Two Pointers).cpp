@@ -1,3 +1,5 @@
+// O(n) time
+// O(1) space
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
@@ -12,3 +14,15 @@ public:
         return i+1;
     }
 };
+
+
+// O(Nlogn) time
+// O(n) space
+int Solution::removeDuplicates(vector<int> &vec) {
+    unordered_set<int> s;
+    for (int i : vec)
+        s.insert(i);
+    vec.assign( s.begin(), s.end() );
+    sort( vec.begin(), vec.end() );
+    return vec.size();
+}
