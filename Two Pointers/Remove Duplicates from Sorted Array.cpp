@@ -1,3 +1,4 @@
+// TWO POINTERS
 // O(n) time
 // O(1) space
 class Solution {
@@ -16,6 +17,7 @@ public:
 };
 
 
+// USING SETS
 // O(Nlogn) time
 // O(n) space
 int Solution::removeDuplicates(vector<int> &vec) {
