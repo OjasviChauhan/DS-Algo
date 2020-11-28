@@ -1,3 +1,5 @@
+// http://codeforces.com/contest/276/problem/D
+
 #include <bits/stdc++.h>
 using namespace std;
 #define fl(i,a,b) for(int i=a;i<b;i++)
