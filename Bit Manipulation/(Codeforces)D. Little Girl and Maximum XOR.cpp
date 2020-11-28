@@ -23,10 +23,10 @@ int pow1(int a,int b){
 
 int32_t main() {
 	fast;
-	#ifndef ONLINE_JUDGE
-		freopen("input.txt","r",stdin);
-		freopen("output.txt","w",stdout);
-	#endif
+// 	#ifndef ONLINE_JUDGE
+// 		freopen("input.txt","r",stdin);
+// 		freopen("output.txt","w",stdout);
+// 	#endif
 	
 	int a,b;
 	cin>>a>>b;
