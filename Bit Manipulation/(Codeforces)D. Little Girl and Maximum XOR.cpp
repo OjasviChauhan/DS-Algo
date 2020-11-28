@@ -41,7 +41,7 @@ int32_t main() {
 		if(flag){
 			ans += pow1(2,i);
 		}
-        if(l!=r and !flag){
+        	if(l!=r and !flag){
 			ans += pow1(2,i);
 			flag = true;
 		}
