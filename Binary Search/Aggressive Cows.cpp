@@ -43,9 +43,10 @@ void solve()
   	while(l<=r)
   	{
   		int mid = (l+r)/2;
-  		ans = mid;
-  		if(check(A,n,c,mid)) 
-  			l = mid+1;
+  		if(check(A,n,c,mid)){ 
+  			ans = mid;
+			l = mid+1;
+		}
   		else 
   			r = mid-1;
   	}
