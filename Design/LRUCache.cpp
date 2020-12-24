@@ -1,16 +1,18 @@
 /*
 
-Storing values in a Hashmap whose KEY is a given key and VALUE is an iterator to 
+Storing values in a Hashmap whose key is a given KEY and value is an iterator to 
 the corresponding nodes of Linkedlist.
+Each node of Linkedlist is a pair of KEY and VALUE.
 
-Key    (key,value)
-a  --->   a-1
-           |
-b  --->   b-2
-           |
-c  --->   c-3
-           |
-d  --->   d-4
+KEY  --->  (KEY,VALUE)
+----------------------
+a    ---->    a-1
+               |
+b    ---->    b-2
+               |
+c    ---->    c-3
+               |
+d    ---->    d-4
 
 */
 
