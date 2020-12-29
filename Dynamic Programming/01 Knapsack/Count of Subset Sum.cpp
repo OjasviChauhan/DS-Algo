@@ -12,7 +12,7 @@ int subsetSum(int arr[],int sum,int n){
     dp[0][0] = 1;
     int zeros=0;
     for(int i=1;i<=n;i++){
-    	if(A[i-1]==0) zeros++;
+    	if(arr[i-1]==0) zeros++;
         dp[i][0] = pow(2,zeros);
     }
     	
@@ -40,7 +40,7 @@ ios_base::sync_with_stdio(false);
     	int n;
     	cin>>n;
     	int arr[n];
-    	fl(i,0,n){
+    	for(int i=0;i<n;i++){
     		cin>>arr[i];
     	}
     	int sum;
