@@ -3,25 +3,16 @@ using namespace std;
 #define endl '\n'
 #define int long long
 
-int countZeros(vector<int> nums, int z){
-        int count=0;
-        for(int i=0;i<=z;i++){
-            if(nums[i] == 0){
-                count++;
-            }
-        }
-        return count;
-}
-
 int subsetSum(int arr[],int sum,int n){
     int dp[n+1][sum+1];
-
     for(int j=0;j<=sum;j++){
     	dp[0][j] = 0;
     }
+	
     dp[0][0] = 1;
+    int zeros=0;
     for(int i=1;i<=n;i++){
-	int zeros = countZeros(nums,i-1);
+    	if(A[i-1]==0) zeros++;
         dp[i][0] = pow(2,zeros);
     }
     	
@@ -56,5 +47,5 @@ ios_base::sync_with_stdio(false);
     	cin>>sum;
         cout<<subsetSum(arr,sum,n)<<endl;    
     }
-	return 0;
+    return 0;
 }
