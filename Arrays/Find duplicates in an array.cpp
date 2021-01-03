@@ -1,19 +1,19 @@
-// https://practice.geeksforgeeks.org/problems/find-duplicates-in-an-array/1#
+// https://leetcode.com/problems/find-all-duplicates-in-an-array/
 
-vector<int> duplicates(int a[], int n) {
-    vector<int> v;
-    for(int i=0;i<n;i++){
-        int index = a[i]%n;
-        a[index] += n;
-    }
-    for(int i=0;i<n;i++){
-        if(a[i]/n > 1){
-            v.push_back(i);
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        if(nums.empty()) return {};
+        vector<int>ans;
+        for(int i=0;i<nums.size();i++){
+            int index = abs(nums[i]) - 1;
+            if(nums[index]<0)
+                ans.push_back(abs(nums[i]));
+            nums[index] = -nums[index];
         }
+        return ans;
     }
-    if(v.empty()) return {-1};
-    return v;
-}
+};
 
 // O(N) Time
 // O(1) Space
