@@ -65,6 +65,5 @@ int32_t main(){
     for(int i=1;i<=t;i++){
        cout<<"Case #"<<i<<": "<<solve()<<endl; 
     }
-	
 	return 0;
 }
