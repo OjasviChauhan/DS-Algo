@@ -22,8 +22,8 @@ public:
 			int wt = nbr.ss;
 			if(!visited[node]){
 				count[src] += dfsHelper(node,visited,count,ans,V);
-                int nx = count[node];
-                int ny = V - nx;
+                		int nx = count[node];
+                		int ny = V - nx;
 				ans += 2*min(nx,ny)*wt;
 			}
 		}
@@ -38,7 +38,7 @@ public:
 			count[i] = 1;
 		}
 
-        int ans=0;
+        	int ans=0;
 		dfsHelper(1,visited,count,ans,n);
 		return ans;
 	}
@@ -60,10 +60,10 @@ int solve()
 
 int32_t main(){
 	fast;
-    int t;
-    cin>>t;
-    for(int i=1;i<=t;i++){
-       cout<<"Case #"<<i<<": "<<solve()<<endl; 
-    }
+    	int t;
+    	cin>>t;
+    	for(int i=1;i<=t;i++){
+       		cout<<"Case #"<<i<<": "<<solve()<<endl; 
+    	}
 	return 0;
 }
