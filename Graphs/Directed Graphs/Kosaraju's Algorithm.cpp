@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// dfs1 for getting the order according the finish time
+// dfs1 for getting the order according to the finish time
 void dfs1(vector<int> l[],int src,bool* visited,vector<int> &stack){
 	visited[src] = true;
 	for(auto nbr:l[src]){
