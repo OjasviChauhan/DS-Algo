@@ -5,7 +5,7 @@ template<typename T>
 class Graph{
     unordered_map<T,list<pair<T,int>>> l;
 public:
-    void addEdge(int x,int y,int dist,bool bidir=true){
+    void addEdge(T x,T y,int dist,bool bidir=true){
         l[x].push_back({y,dist});
         if(bidir)
             l[y].push_back({x,dist});
