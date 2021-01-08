@@ -1,3 +1,5 @@
+// https://www.spoj.com/problems/CLFLARR/
+
 #include <bits/stdc++.h>
 using namespace std;
 #define pb push_back
@@ -29,7 +31,6 @@ public:
             par[y] = max(par[x],par[y]);
         }
     }
-
 };
 
 int32_t main(){
