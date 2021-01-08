@@ -1,13 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define pb push_back
-#define endl '\n'
-#define int long long
-#define ff first
-#define ss second
-#define fast ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
-#define print(v) for(auto x:v){cout<<x<<" ";}cout<<endl;
-int mod=1000000007;
 
 template<typename T>
 class Graph{
@@ -26,36 +18,32 @@ public:
         for(auto p:l){
             dist[p.first] = INT_MAX;
         }
-        dist[src] = 0;   // except source
+        dist[src] = 0;   
         
         // making a set to store the data(distance,name) of nodes.
         set<pair<int,T>> s;
         s.insert({0,src});
 
         while(!s.empty()){
-            // find the node at the minimum distance from src which 
-            // will be at the front of the set.
+            // find the pair at the front
             auto p = *s.begin();
-            int nodeDist = p.first;
-            T node = p.second;
-
             s.erase(s.begin());
             
+            T node = p.second;
+            
             // Iterate over the neighbours of the current node
-            for(auto nbr:l[node]){
-                if(nodeDist + nbr.second < dist[nbr.first]){
-                    // for updation, we have to erase the old data of destination node
-                    // from the set and insert the new data for that node.
-                    
-                    T dest = nbr.first;     // the destination node on which we are going
-                    auto f = s.find({dist[dest], dest});
+            for(auto nbrs:l[node]){
+                T nbr = nbrs.first;
+                int wt = nbrs.second;
+
+                if(dist[node] + wt < dist[nbr]){
+                    auto f = s.find({dist[nbr], nbr});
                     if(f!=s.end()){
                         s.erase(f);
                     }
                     
-                    // Insert the new data
-                    dist[dest] = nodeDist + nbr.second;
-                    s.insert({dist[dest], dest});
+                    dist[nbr] = dist[node] + wt;
+                    s.insert({dist[nbr], nbr});
                 }
             }
         }
