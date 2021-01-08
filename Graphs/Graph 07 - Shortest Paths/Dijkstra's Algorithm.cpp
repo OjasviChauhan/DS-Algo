@@ -37,10 +37,10 @@ public:
                 int wt = nbrs.second;
 
                 if(dist[node] + wt < dist[nbr]){
-                    auto f = s.find({dist[nbr], nbr});
-                    if(f!=s.end()){
-                        s.erase(f);
-                    }
+                    // if distance of particular node is not infinity then it
+                    // means that it is being visited once and is present in set.
+                    if(dist[nbr]!=INT_MAX)
+                        s.erase(s.find({dist[nbr], nbr}));
                     
                     dist[nbr] = dist[node] + wt;
                     s.insert({dist[nbr], nbr});
