@@ -1,4 +1,4 @@
-https://assessment.hackerearth.com/challenges/hiring/amazon-sde-hiring-challenge-2/algorithm/moving-to-new-office-dd532d09/
+// https://assessment.hackerearth.com/challenges/hiring/amazon-sde-hiring-challenge-2/algorithm/moving-to-new-office-dd532d09/
 
 #include<bits/stdc++.h>
 #define mod 1000000007
