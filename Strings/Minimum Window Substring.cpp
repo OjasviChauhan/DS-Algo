@@ -29,6 +29,8 @@ public:
             FS[ch]++;
             
             // maintain the count of the characters matched (EXPANSION)
+            // consider those characters which are already present in 't' and whose
+            // freq in FS is less than or equal to that of in FT.
             if(FT[ch] != 0 and FS[ch] <= FT[ch]){
                 cnt++;
             }
@@ -37,6 +39,8 @@ public:
             if(cnt == tl){
                 // start shrinking from left (CONTRACTION)
                 char temp = s[start];
+                // remove those chars from FS which are not present in 't' or 
+                // which have freq more than that of in FT.
                 while(FT[temp]==0 or FS[temp]>FT[temp]){
 
                     FS[temp]--;
