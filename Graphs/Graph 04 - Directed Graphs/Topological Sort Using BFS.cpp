@@ -50,6 +50,8 @@ public:
         
         // reversing the order to get the correct topological sort
         reverse(ans.begin(),ans.end());
+        // if final ans does not have all nodes of graph it means that contains cycle
+        // and thus reaching all nodes is impossible.
         if(ans.size() != n) ans.clear();
         return ans;
     }
