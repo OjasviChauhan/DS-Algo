@@ -24,7 +24,7 @@ public:
                 fs.clear();
             }
             else if(fs[ch] > fp[ch]){
-                while(fs[s[end]] != fp[s[end]]){
+                while(fs[ch] != fp[ch]){
                     fs[s[start]]--;
                     start++;
                 }
