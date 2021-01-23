@@ -1,6 +1,10 @@
-// https://leetcode.com/problems/next-permutation/
-
 /*
+Problem: https://leetcode.com/problems/next-permutation/
+
+To understand the intuition behind this algorithm.
+https://www.youtube.com/watch?v=LuLCLgMElus&feature=emb_logo
+
+
 1. Find the largest index k such that nums[k] < nums[k + 1]. 
    If no such index exists, just reverse nums and done.
 2. Find the largest index l > k such that nums[k] < nums[l].
