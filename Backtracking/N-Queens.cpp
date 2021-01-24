@@ -51,8 +51,8 @@ public:
             }
             ans.push_back(S);
             
-            // returning false will not stop code after first confguration
-            // it will revert back and search for all possible congiguration.
+            // returning false will not stop code after first configuration
+            // it will revert back and search for all possible configuration.
             return false;
         }
         
