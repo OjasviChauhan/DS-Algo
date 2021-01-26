@@ -49,10 +49,8 @@ int Solution::maximumGap(const vector<int> &arr) {
 
     // Arrays to store maximum and minimum values
     // in n-1 buckets of differences.
-    int maxBucket[n - 1];
-    int minBucket[n - 1];
-    fill_n(maxBucket, n - 1, INT_MIN);
-    fill_n(minBucket, n - 1, INT_MAX);
+    vector<int> maxBucket(n-1,INT_MIN);
+    vector<int> minBucket(n-1,INT_MAX);
 
     // Expected gap for every bucket.
     float delta = (float)(maxVal - minVal) / (float)(n - 1);
