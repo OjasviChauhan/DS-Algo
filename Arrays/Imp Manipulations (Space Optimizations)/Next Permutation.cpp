@@ -1,5 +1,10 @@
 /*
-Problem: https://leetcode.com/problems/next-permutation/
+Problem Versions
+-----------------
+1: https://leetcode.com/problems/next-permutation/
+2: https://www.interviewbit.com/problems/next-similar-number/
+3: https://leetcode.com/problems/next-greater-element-iii/
+
 
 To understand the intuition behind this algorithm.
 https://www.youtube.com/watch?v=LuLCLgMElus&feature=emb_logo
