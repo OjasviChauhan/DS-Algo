@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/majority-element-ii/submissions/
+// https://leetcode.com/problems/majority-element-ii/
 
 // Here we are maintaining two majority elements by assuming them and if any third minority elements comes
 // then we reduce their count by 1. At the end we do second iteration to make sure that they are majority element
