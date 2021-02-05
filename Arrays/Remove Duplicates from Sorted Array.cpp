@@ -2,29 +2,16 @@
 
 class Solution {
 public:
-    int removeDuplicates(vector<int>& v) {
-        if(v.size()==0){
-            return 0;
-        }
-        int count = 1;
-        vector<int>::iterator itr;
-        itr = v.begin()+1;
-        
-        for(int i=1;i<v.size();i++){
-            if(v[i]==v[i-1]){
-                count--;
-            }
+    int removeDuplicates(vector<int> &A) {
+        int n = A.size();
+        int count = 0;
+        for(int i=0;i<n;i++){ 
+            if(i<n-2 && A[i]==A[i+1] && A[i]==A[i+2]) continue;
             else{
-                count = 1;
-            }
-            if(count < 0){
-                v.erase(itr);
+                A[count] = A[i];
                 count++;
-                i--;
-                itr--;
             }
-            itr++;
         }
-        return v.size();
+        return count;
     }
 };
