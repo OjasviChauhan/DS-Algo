@@ -24,15 +24,12 @@ public:
             int r1 = cut1==n1 ? INT_MAX : nums1[cut1];
             int r2 = cut2==n2 ? INT_MAX : nums2[cut2];
             
-            if(l1 > r2){
+            if(l1 > r2)
                 hi = cut1-1;
-            }
-            else if(l2 > r1){
+            else if(l2 > r1)
                 lo = cut1+1;
-            }
-            else{
+            else
                 return (n1+n2)%2==0 ? (max(l1,l2)+min(r1,r2))/(double)2 : min(r1,r2);
-            }
         }
         return 0;
     }
