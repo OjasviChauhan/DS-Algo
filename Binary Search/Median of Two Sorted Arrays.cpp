@@ -3,12 +3,10 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        if(nums1.size() > nums2.size()){
-            swap(nums1,nums2);
-        }
-        
         int n1 = nums1.size();
         int n2 = nums2.size();
+        
+        if(n1 > n2) return findMedianSortedArrays(nums2, nums1);
         
         if(n1==0 and n2==0) return 0;
         else if(n1==0 and n2==1) return nums2[0];
