@@ -1,27 +1,33 @@
 // https://leetcode.com/problems/combination-sum/
 
-class Solution {
-public:
-    vector<vector<int>> ans;
-    void solve(vector<int> &c,vector<int> &v,int remain,int start){
-        if(remain<0){
-            return;
+void solve(int i,int tar,vector<int>& A,vector<vector<int>>& ans,vector<int>& ds){
+    if(i==A.size()){
+        if(tar == 0){
+            ans.push_back(ds);
         }
-        else if(remain==0){
-            ans.push_back(v);
-        }
-        else{
-            for(int i=start;i<c.size();i++){
-                v.push_back(c[i]);
-                solve(c,v,remain-c[i],i);
-                v.pop_back();
-            }
-        }
+        return;
     }
     
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<int> v;
-        solve(candidates,v,target,0);
-        return ans;
+    // pick the element
+    if(A[i] <= tar){
+        ds.push_back(A[i]);
+        solve(i,tar-A[i],A,ans,ds);
+        ds.pop_back();
     }
-};
+    // NOT pick the element
+    solve(i+1,tar,A,ans,ds);
+}
+
+vector<vector<int> > Solution::combinationSum(vector<int> &A, int tar) {
+    vector<vector<int>> ans;
+    vector<int> ds,a;
+    sort(A.begin(),A.end());
+    
+    a.push_back(A[0]);
+    for (auto i = 1; i<A.size(); ++i)
+        if (A[i-1] != A[i])
+            a.push_back(A[i]);
+    
+    solve(0,tar,a,ans,ds);
+    return ans;
+}
