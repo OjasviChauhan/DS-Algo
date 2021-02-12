@@ -49,6 +49,7 @@ public:
                 }
             }
         }
+        // Backtrack
         board[i][j] = '.';
         return false;
     }
