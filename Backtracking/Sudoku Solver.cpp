@@ -27,6 +27,7 @@ public:
     }
     
     bool solve(vector<vector<char>>& board,int i,int j,int n){
+        // Base Cases
         if(i==n){
             return true;
         }
@@ -37,6 +38,7 @@ public:
             return solve(board,i,j+1,n);
         }
         
+        // Main Recursive Case
         for(int number=1;number<=9;number++){
             char c = number + 48;
             if(canPlace(board,i,j,n,c)){
