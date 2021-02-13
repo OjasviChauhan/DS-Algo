@@ -1,5 +1,8 @@
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
 
+// Time : O(n*k)
+// Space : O(n*k)
+
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {
@@ -30,5 +33,37 @@ public:
             }
         }
         return dp[k][n-1];
+    }
+};
+
+
+// Time : O(n*k)
+// Space : O(n)
+
+class Solution {
+public:
+    int maxProfit(int k, vector<int>& prices) {
+        int n = prices.size();
+        if(n==0) return 0;
+        int evenProfit[n], oddProfit[n];
+        memset(evenProfit,0,sizeof evenProfit);
+        memset(oddProfit,0,sizeof oddProfit);
+        
+        for(int t = 1; t <= k; t++){
+            int* currentProfit = oddProfit;
+            int* previousProfit = evenProfit;
+            int maxThusFar = INT_MIN;
+            
+            if(t%2 == 0){
+                currentProfit = evenProfit;
+                previousProfit = oddProfit;
+            }
+            
+            for(int d=1; d<n; d++){
+                maxThusFar = max(maxThusFar, previousProfit[d-1] - prices[d-1]);
+                currentProfit[d] = max(currentProfit[d-1], maxThusFar + prices[d]);
+            }
+        }
+        return k%2==0 ? evenProfit[n-1] : oddProfit[n-1]; 
     }
 };
