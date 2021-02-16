@@ -14,7 +14,7 @@ vector<int> Solution::solve(vector<vector<int> > &A) {
         int col = pq.top().second.second;
         pq.pop();
         col++;
-        if(col<A[row].size()){
+        if(col < A[row].size()){
             pq.push({A[row][col], {row,col}});
         }
     }
