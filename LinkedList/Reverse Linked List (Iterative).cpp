@@ -33,7 +33,7 @@ public:
 };
 
 
-// Another way of writing
+// Another way of writing (PCN Approach)
 
 class Solution {
 public:
