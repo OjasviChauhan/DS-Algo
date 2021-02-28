@@ -3,34 +3,32 @@
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        int sl = s.length();
-        int pl = p.length();
         vector<int> ans;
+        if(p.size() > s.size()) return ans;
         
-        if(pl > sl) return ans;
-        
-        unordered_map<char,int> fs,fp;
-        for(char c:p){
-            fp[c]++;
+        unordered_map<char,int> FS,FP;
+        for(auto c : p){
+            FP[c]++;
         }
         
         int start=0,end=0;
-        for(end=0;end<sl;end++){
-            char ch = s[end];
-            fs[ch]++;
-
-            if(fp[ch]==0){
-                start = end+1;
-                fs.clear();
-            }
-            else if(fs[ch] > fp[ch]){
-                while(fs[ch] != fp[ch]){
-                    fs[s[start]]--;
-                    start++;
+        for(end=0; end < s.size(); end++){
+            char c = s[end];
+            if(FP.count(c)){
+                FS[c]++;
+                if(FS[c] > FP[c]){
+                    while(FS[c] != FP[c]){
+                        FS[s[start++]]--;
+                    }
+                }
+                if(end-start+1 == p.size()){
+                    ans.push_back(start);
                 }
             }
-            
-            if(end-start+1 == pl) ans.push_back(start);
+            else{
+                FS.clear();
+                start = end+1;
+            }
         }
         return ans;
     }
