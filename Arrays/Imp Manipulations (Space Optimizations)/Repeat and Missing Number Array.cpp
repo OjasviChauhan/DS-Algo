@@ -1,3 +1,37 @@
+// IF CHANGES ARE ALLOWED IN THE GIVEN ARRAY
+
+// https://leetcode.com/problems/set-mismatch/
+
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        int dup, missing;
+        
+        for(int i=0; i<nums.size(); i++){
+            int index = abs(nums[i]) - 1;
+            if(nums[index] < 0)
+                dup = abs(nums[i]);
+            else 
+                nums[index] *= -1;
+        }
+        
+        for(int i=0;i<nums.size();i++){
+            if(nums[i] > 0){
+                missing = i+1;
+                break;
+            }
+        }
+        return {dup,missing};
+    }
+};
+
+// Time : O(2n)
+// Space: O(1)
+
+
+
+
+// IF CHANGES IN THE GIVEN ARRAY ARE NOT ALLOWED OR IF WE HAVE GIVEN READ ONLY ARRAY
 // https://www.interviewbit.com/problems/repeat-and-missing-number-array/
 
 vector<int> Solution::repeatedNumber(const vector<int> &A) {
