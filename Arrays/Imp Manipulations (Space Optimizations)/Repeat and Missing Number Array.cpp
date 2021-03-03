@@ -37,7 +37,7 @@ vector<int> Solution::repeatedNumber(const vector<int> &A) {
     
     // then doing XOR with all numbers from 1 to n to cancel out
     // all same elements and remaining just missing and repeated 
-    // number in two different variables i.e, a and b
+    // number in two different buckets i.e, a and b
     for(int i=1;i<=n;i++){
         if(i&mask)
             a ^= i;
