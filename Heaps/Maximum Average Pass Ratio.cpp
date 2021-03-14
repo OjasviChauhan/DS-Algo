@@ -13,7 +13,7 @@ struct cmp{
 class Solution {
 public:
     double maxAverageRatio(vector<vector<int>>& A, int k) {
-        double ans;
+        double ans = 0;
         priority_queue<pii, vector<pii>, cmp> pq;
         for(vector<int> i: A)
             pq.push({i[0],i[1]});
@@ -30,11 +30,7 @@ public:
             pii cur = pq.top(); 
             pq.pop();
             ans += cur.first / (double) cur.second;
-            if(pq.empty()) {
-                ans /= A.size();
-                break;
-            }
         }
-        return ans;
+        return ans / A.size();
     }
 };
