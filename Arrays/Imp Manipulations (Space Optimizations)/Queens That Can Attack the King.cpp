@@ -26,8 +26,8 @@ public:
                 int x = k[0] + i; 
                 int y = k[1] + j;
                 
-                // now keep going in that direction until found any queen or 
-                // you go out of bound.
+                // now keep going in this direction until we found any queen or 
+                // we go out of bound.
                 while (min(x, y) >= 0 && max(x, y) < 8) {
                     if (grid[x][y]) {
                         res.push_back({ x, y });
