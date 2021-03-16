@@ -1,19 +1,32 @@
-int myCompare(string X, string Y){ 
-    string XY = X.append(Y); 
-    string YX = Y.append(X); 
-    return XY.compare(YX) > 0 ? 1: 0; 
-}
+// https://leetcode.com/problems/largest-number/
 
-string Solution::largestNumber(const vector<int> &A) {
-    vector<string> s;
-    for(int i=0;i<A.size();i++){
-        s.push_back(to_string(A[i]));
+class Solution {
+public:
+    bool static cmp(string X,string Y){
+        string XY = X.append(Y);
+        string YX = Y.append(X);
+        return XY > YX;
     }
-    sort(s.begin(), s.end(), myCompare);
-    string str = "";
-    for(int i=0;i<s.size();i++){
-        str += s[i];
+    
+    string largestNumber(vector<int>& nums) {
+        vector<string> v;
+        for(int i: nums){
+            v.push_back(to_string(i));
+        }
+        sort(v.begin(),v.end(),cmp);
+        string ans = "";
+        
+        for(string s : v){
+            ans += s;
+        }
+        
+        int i=0;
+        if(ans[0] == '0')
+        for(i=0; i<ans.size()-1; i++){
+            if(ans[i+1] != '0')
+                break;
+        }
+        
+        return ans.substr(i);
     }
-    str.erase(0, min(str.find_first_not_of('0'), str.size()-1));
-    return str;
-}
+};
