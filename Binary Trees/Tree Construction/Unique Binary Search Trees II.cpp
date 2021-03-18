@@ -26,8 +26,10 @@ public:
             
             for(auto l : leftBSTs) {
                 for(auto r : rightBSTs){
-                    TreeNode* newNode = new TreeNode(i, l, r);
-                    ans.push_back(newNode);
+                    TreeNode* root = new TreeNode(i);
+                    root->left = l;
+                    root->right = r;
+                    ans.push_back(root);
                 }
             }
         }
