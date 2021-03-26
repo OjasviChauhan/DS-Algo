@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/is-graph-bipartite/submissions/
+// https://leetcode.com/problems/is-graph-bipartite/
 
 class Solution {
 public:
