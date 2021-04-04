@@ -12,42 +12,42 @@ int mod = 1000000007;
 
 void solve()
 {
-	int n;
-	cin >> n;
+    int n;
+    cin >> n;
 
-	vector<pair<int, int>> factors;
-	for (int i = 2; i * i <= n; i++) {
-		int cnt = 0;
-		if (n % i == 0) {
-			while (n % i == 0) {
-				cnt++;
-				n /= i;
-			}
-			factors.push_back({i, cnt});
-		}
-	}
-	if (n != 1) {
-		factors.push_back({n, 1});
-	}
+    vector<pair<int, int>> factors;
+    for (int i = 2; i * i <= n; i++) {
+        int cnt = 0;
+        if (n % i == 0) {
+            while (n % i == 0) {
+                cnt++;
+                n /= i;
+            }
+            factors.push_back({i, cnt});
+        }
+    }
+    if (n != 1) {
+        factors.push_back({n, 1});
+    }
 
-	for (auto p : factors) {
-		cout << p.ff << "^" << p.ss << endl;
-	}
-	cout << endl;
+    for (auto p : factors) {
+        cout << p.ff << "^" << p.ss << endl;
+    }
+    cout << endl;
 }
 
 int32_t main() {
-	fast;
+    fast;
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif
 
-	int t;
-	cin >> t;
-	while (t--)
-	{
-		solve();
-	}
-	return 0;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
 }
