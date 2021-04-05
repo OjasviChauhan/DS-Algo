@@ -1,4 +1,5 @@
 // https://www.spoj.com/problems/PRIME1/
+// https://www.codechef.com/problems/PRIME1
 
 #include <bits/stdc++.h>
 using namespace std;
