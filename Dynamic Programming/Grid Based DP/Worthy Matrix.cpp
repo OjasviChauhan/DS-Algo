@@ -44,7 +44,8 @@ void solve()
                 int start = K;
                 int end = m;
                 int val = 0;
-
+                
+                // Using Binary Search to find that threshold element.
                 while (start <= end) {
                     int mid = (start + end) / 2;
                     int sum = (dp[i][mid] - dp[i - K][mid] - dp[i][mid - K] + dp[i - K][mid - K]);
