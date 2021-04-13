@@ -42,6 +42,7 @@ void solve() {
             return;
         }
     }
+    cout << -1 << endl;
 }
 
 int32_t main() {
