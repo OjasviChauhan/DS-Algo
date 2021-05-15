@@ -3,6 +3,41 @@
 class Solution {
 public:
     vector<vector<int>> res;
+    void solve(vector<int> &nums, vector<int> &ds, map<int,int> &cnt){
+        if(ds.size() == nums.size()){
+            res.push_back(ds);
+            return;
+        }
+        
+        for (auto &p : cnt){
+            if (p.second == 0) continue;
+            p.second--;
+            ds.push_back(p.first);
+            solve(nums, ds, cnt);
+            ds.pop_back();
+            p.second++;
+        }
+    }
+    
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        int n = nums.size();
+        map<int,int> cnt;
+        for(int i : nums){
+            cnt[i]++;
+        }
+        vector<int> ds;
+        
+        solve(nums, ds, cnt);
+        return res;
+    }
+};
+
+
+// Another Solution
+
+class Solution {
+public:
+    vector<vector<int>> res;
     void solve(int n,vector<int> &nums,vector<int> &ds,bool used[]){
         if(ds.size() == n){
             res.push_back(ds);
