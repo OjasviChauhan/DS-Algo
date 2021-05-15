@@ -8,7 +8,6 @@ public:
             res.push_back(ds);
             return;
         }
-        
         for (auto &p : cnt){
             if (p.second == 0) continue;
             p.second--;
@@ -22,11 +21,9 @@ public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         int n = nums.size();
         map<int,int> cnt;
-        for(int i : nums){
-            cnt[i]++;
-        }
-        vector<int> ds;
+        for(int i : nums) cnt[i]++;
         
+        vector<int> ds;
         solve(nums, ds, cnt);
         return res;
     }
