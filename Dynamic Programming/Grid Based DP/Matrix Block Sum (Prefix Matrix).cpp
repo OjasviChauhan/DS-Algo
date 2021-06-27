@@ -8,6 +8,8 @@ public:
         
         int dp[r+1][c+1];
         memset(dp,0,sizeof(dp));     
+        
+        // making prefix matrix
         for(int i=1;i<=r;i++){
             for(int j=1;j<=c;j++){
                 dp[i][j] = mat[i-1][j-1] + dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1];
