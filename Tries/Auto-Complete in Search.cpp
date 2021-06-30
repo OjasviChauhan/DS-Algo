@@ -29,21 +29,12 @@ void insert(string word, TrieNode* root) {
     temp->terminal = true;
 }
 
-bool isLeaf(TrieNode* root) {
-    for (int i = 0; i < 26; i++) {
-        char c = i + 97;
-        if (root->children[c])
-            return false;
-    }
-    return true;
-}
-
 void suggestionRec(TrieNode* temp, string &ds, vector<string> &v) {
     if (temp->terminal) {
         v.push_back(ds);
     }
     if (v.size() == limit) return;
-    if (isLeaf(temp)) return;
+    if (temp->children.size() == 0) return;
 
     for (int i = 0; i < 26; i++) {
         char c = i + 97;
@@ -65,7 +56,7 @@ vector<string> getSuggestions(string preQuery, TrieNode* root) {
         }
     }
     //if (temp->terminal) v.push_back(preQuery);
-    if (isLeaf(temp)) return v;
+    if (temp->children.size() == 0) return v;
     else {
         string ds = preQuery;
         suggestionRec(temp, ds, v);
