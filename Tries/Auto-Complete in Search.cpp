@@ -17,7 +17,7 @@ public:
 void insert(string word, TrieNode* root) {
     TrieNode* temp = root;
     for (char c : word) {
-        if (temp->children.count(c)) {
+        if (temp->children[c]) {
             temp = temp->children[c];
         }
         else {
@@ -75,7 +75,7 @@ vector<string> getSuggestions(string preQuery, TrieNode* root) {
 
 vector<vector<string>> solve(vector<string> repository, string query) {
     vector<vector<string>> res;
-    TrieNode* root = new TrieNode('/0');
+    TrieNode* root = new TrieNode('0');
 
     for (string &word : repository) {
         insert(word, root);
