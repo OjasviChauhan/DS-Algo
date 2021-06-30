@@ -2,33 +2,29 @@
 
 class Solution {
 public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        if(k==1) return arr;
-        int n = arr.size();
-        list<int> l;
+    // time: O(n)
+    // space: O(k)
+    vector<int> maxSlidingWindow(vector<int>& A, int k) {
         vector<int> ans;
-        int i=0,j=0;
-
-        for(j=0;j<k;j++){
-            while(!l.empty() and l.back() < arr[j]){
-                l.pop_back();
-            }
-            l.push_back(arr[j]);
-        }
-        ans.push_back(l.front());
+        list<int> q;
+        int start = 0, end = 0;
         
-        while(j<n){
-            if(arr[i] == l.front()){
-                l.pop_front();
+        for(end = 0; end < k; end++){
+            while(!q.empty() and q.back() < A[end]) q.pop_back();
+            q.push_back(A[end]);
+        }
+        ans.push_back(q.front());
+        
+        while(end < A.size()){
+            if(A[start] == q.front()){
+                q.pop_front();
             }
-            while(!l.empty() and l.back() < arr[j]){
-                l.pop_back();
-            }
-            l.push_back(arr[j]);
-            ans.push_back(l.front());
+            start++;
             
-            i++;
-            j++;
+            while(!q.empty() and q.back() < A[end]) q.pop_back();
+            q.push_back(A[end]);
+            end++;
+            ans.push_back(q.front());
         }
         return ans;
     }
