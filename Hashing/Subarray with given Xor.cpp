@@ -10,7 +10,6 @@ int Solution::solve(vector<int> &A, int B) {
             count += m[xr ^ B];
         }
         m[xr]++;
-        cout << count << " ";
     }
     return count;
 }
