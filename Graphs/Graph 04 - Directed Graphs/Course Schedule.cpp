@@ -5,9 +5,9 @@ public:
         stack[src] = true;
         for(auto nbr : gr[src]){
             if(!vis[nbr] and contains_cycle(nbr, gr, vis, stack, ans)){
-                return true;
+               return true;
             }
-            else if(stack[src]) return true;
+            else if(stack[nbr]) return true;
         }
         stack[src] = false;
         ans.push_back(src);
