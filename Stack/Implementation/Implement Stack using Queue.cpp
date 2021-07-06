@@ -1,4 +1,7 @@
+// https://leetcode.com/problems/implement-stack-using-queues/
+
 // Using two Queues
+
 class MyStack {
 private:
     queue<int> *q1;
@@ -33,9 +36,10 @@ public:
     }
 };
 
-
-
+--------------------------------------------------------------------------
+    
 // Using Single Queue
+    
 class MyStack {
 private:
     queue<int> q;
