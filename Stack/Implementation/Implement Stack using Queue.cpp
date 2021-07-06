@@ -1,3 +1,4 @@
+// Using two Queues
 class MyStack {
 private:
     queue<int> *q1;
@@ -29,5 +30,36 @@ public:
 
     bool empty() {
         return q1->empty();
+    }
+};
+
+
+
+// Using Single Queue
+class MyStack {
+private:
+    queue<int> q;
+public:
+    void push(int x) {
+        q.push(x);
+        int k = q.size()-1;
+        while(k--){
+            q.push(q.front());
+            q.pop();
+        }
+    }
+
+    int pop() {
+        int t = q.front();
+        q.pop();
+        return t;
+    }
+
+    int top() {
+        return q.front();
+    }
+
+    bool empty() {
+        return q.empty();
     }
 };
