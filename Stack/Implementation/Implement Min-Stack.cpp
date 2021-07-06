@@ -1,8 +1,7 @@
 // https://leetcode.com/problems/min-stack/
 
-Time: O(1)
-Space: O(N)
 
+// Using two Stacks
 class MinStack {
 public:
     stack<int> s;
@@ -26,5 +25,35 @@ public:
     
     int getMin() {
         return ss.top();
+    }
+};
+
+
+// Using One Stack
+
+class MinStack {
+    stack<pair<int, int>> s;
+public:
+    void push(int x) {
+        int ME;
+        if (s.empty()) {
+            ME = x;
+        }
+        else {
+            ME = min(s.top().second, x);
+        }
+        s.push({x, ME});
+    }
+
+    void pop() {
+        s.pop();
+    }
+
+    int top() {
+        return s.top().first;
+    }
+
+    int getMin() {
+        return s.top().second;
     }
 };
