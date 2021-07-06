@@ -36,12 +36,8 @@ class MinStack {
 public:
     void push(int x) {
         int ME;
-        if (s.empty()) {
-            ME = x;
-        }
-        else {
-            ME = min(s.top().second, x);
-        }
+        if (s.empty()) ME = x;
+        else ME = min(s.top().second, x);
         s.push({x, ME});
     }
 
