@@ -11,7 +11,7 @@ public:
                 for(int j = i; j < i + n; j++) {
                     tank += gas[j % n] - cost[j % n];
                     if(tank < 0){
-                        i = j;
+                        i = j;  // no need to check for stations btw i to j as starting points
                         break;
                     }
                 }
