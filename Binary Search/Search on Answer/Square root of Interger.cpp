@@ -1,23 +1,39 @@
-class Solution {
-public:
-    bool check(int n,int x){
-        if(sqrt(x) < n) return true;
-        return false;
-    }
-    
-    int mySqrt(int x) {
-        int l = 0, h = x;
-        int res = -1;
-        while(l<=h){
-            int mid = l+(h-l)/2;
-            if(check(mid,x)){
-                h = mid-1;
-            }
-            else{
-                res = mid;
-                l = mid+1;
-            }
+// Find square root of number upto given precision using binary search
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+float squareRoot(int number, int precision) {
+    int start = 0, end = number;
+    int mid;
+    // variable to store the answer
+    float ans;
+    while (start <= end) {
+        mid = (start + end) / 2;
+        if (mid * mid == number) {
+            ans = mid;
+            break;
         }
-        return res;
+        if (mid * mid < number) {
+            start = mid + 1;
+            ans = mid;
+        }
+        else {
+            end = mid - 1;
+        }
     }
-};
+ 
+    // For computing the fractional part
+    // of square root upto given precision
+    float increment = 0.1;
+    for (int i = 0; i < precision; i++) {
+        while (ans * ans <= number) {
+            ans += increment;
+        }
+ 
+        // loop terminates when ans * ans > number
+        ans = ans - increment;
+        increment = increment / 10;
+    }
+    return ans;
+}
