@@ -5,10 +5,9 @@ public:
     int arr[100000]; //used to store the result using indices
     
     void merge(vector<pair<int,int>>& A,int low,int mid,int high){
-        //mid is the starting element for the second array
         int i = low;
         int j = mid + 1;
-        int count = 0; //the number of elements smaller in the arr from mid to high
+        int count = 0; //the number of elements larger in the A from low to mid
         vector<pair<int,int>> B(high-low+1);
         int k = 0;
         while(i <= mid && j <= high) {
@@ -17,20 +16,18 @@ public:
                 B[k++] = A[i++];
             }
             else{
-                count++;
+                count++;    // A[i] > A[j] and i < j
                 B[k++] = A[j++];
             }
         }
-        //add the remaining first array element if left any
         while(i <= mid) {
             arr[A[i].second] += count; //add the number of larger elements
             B[k++] = A[i++]; 
         }
-        //add the remaining second array elements if left any
         while(j <= high) {
             B[k++] = A[j++];
         }
-        //change the A to make it in sorted order 
+
         for(int i = 0; i < k; i++) {
             A[low++] = B[i];
         }
