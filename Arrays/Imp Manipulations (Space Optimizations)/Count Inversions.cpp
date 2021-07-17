@@ -3,31 +3,6 @@
 class Solution {
 public:
     int arr[100000]; //used to store the result using indices
-    vector<int> countSmaller(vector<int>& nums) {
-        //we store the vector of A
-        //why we use pair , since we need to know the 
-        //index of the element in the original array 
-        vector<pair<int,int>> A;
-        for(int i=0;i<nums.size();i++) {
-            A.push_back({nums[i],i});
-        }
-        
-        mergeSort(A,0,nums.size()-1);
-        vector<int> res(nums.size());
-        
-        for(int i=0;i<nums.size();i++) {
-            res[i] = arr[i];
-        }
-        return res;
-    }
-    void mergeSort(vector<pair<int,int>>& A,int low,int high) {
-        int mid = (low + high)/2;
-        if(low < high) {
-            mergeSort(A, low, mid);
-            mergeSort(A, mid + 1, high);
-            merge(A, low, mid , high);
-        }
-    }
     
     void merge(vector<pair<int,int>>& A,int low,int mid,int high){
         //mid is the starting element for the second array
@@ -59,5 +34,32 @@ public:
         for(int i = 0; i < k; i++) {
             A[low++] = B[i];
         }
+    }
+    
+    void mergeSort(vector<pair<int,int>>& A,int low,int high) {
+        int mid = (low + high)/2;
+        if(low < high) {
+            mergeSort(A, low, mid);
+            mergeSort(A, mid + 1, high);
+            merge(A, low, mid , high);
+        }
+    }
+    
+    vector<int> countSmaller(vector<int>& nums) {
+        //we store the vector of A
+        //why we use pair , since we need to know the 
+        //index of the element in the original array 
+        vector<pair<int,int>> A;
+        for(int i=0;i<nums.size();i++) {
+            A.push_back({nums[i],i});
+        }
+        
+        mergeSort(A,0,nums.size()-1);
+        vector<int> res(nums.size());
+        
+        for(int i=0;i<nums.size();i++) {
+            res[i] = arr[i];
+        }
+        return res;
     }
 };
