@@ -13,7 +13,7 @@ public:
         int k = 0;
         while(i <= mid && j <= high) {
             if(A[i].first <= A[j].first) {
-                arr[A[i].second] += count; //add the number of smaller elements
+                arr[A[i].second] += count; //add the number of larger elements
                 B[k++] = A[i++];
             }
             else{
@@ -23,7 +23,7 @@ public:
         }
         //add the remaining first array element if left any
         while(i <= mid) {
-            arr[A[i].second] += count; //add the number of smaller elements
+            arr[A[i].second] += count; //add the number of larger elements
             B[k++] = A[i++]; 
         }
         //add the remaining second array elements if left any
