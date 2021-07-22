@@ -1,6 +1,5 @@
 // https://leetcode.com/problems/min-stack/
 
-
 // Using two Stacks
 class MinStack {
 public:
@@ -29,8 +28,7 @@ public:
 };
 
 
-// Using One Stack
-
+// Using One Stack with Pairs
 class MinStack {
     stack<pair<int, int>> s;
 public:
@@ -53,3 +51,47 @@ public:
         return s.top().second;
     }
 };
+
+
+//Using one stack and no pairs
+stack<long> s;
+long mini;
+MinStack::MinStack() {
+    while(!s.empty()) s.pop();
+    mini = INT_MAX;
+}
+
+void MinStack::push(int x) {
+    if(s.empty()) {
+        s.push(x);
+        mini = x;
+    }
+    else{
+        if(x >= mini) s.push(x);
+        else{
+            s.push(2*x - mini);
+            mini = x;
+        }
+    }
+}
+
+void MinStack::pop() {
+    if(s.empty()) return;
+    long x = s.top();
+    s.pop();
+    if(x < mini){
+        mini = 2*mini - x;
+    }
+}
+
+int MinStack::top() {
+    if(s.empty()) return -1;
+    long t = s.top();
+    if(t < mini) return mini;
+    return t;
+}
+
+int MinStack::getMin() {
+    if(s.empty()) return -1;
+    else return mini;
+}
