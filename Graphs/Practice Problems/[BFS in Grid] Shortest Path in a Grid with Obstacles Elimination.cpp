@@ -32,8 +32,8 @@ public:
                 else continue;  
             }
 			
-			// If the cell was previously visited and that time this cell had larger
-            // k value than the current one, then we don't need to continue on this 
+			// If the cell was previously visited and had the larger k value
+            // than the current one, then we don't need to continue on this 
             // path because that previous path can go upto more eliminations.
             if(vis[x][y] != -1 and vis[x][y] >= rem_k)
                 continue;
