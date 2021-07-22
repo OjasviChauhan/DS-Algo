@@ -28,8 +28,10 @@ public:
         for (int i = start; i < nums.size(); ++i)
             if (i == start || nums[i - 1] != nums[i])
                 for (auto &set : kSum(nums, target-nums[i], i+1, k-1)) {
-                    res.push_back({nums[i]});
-                    res.back().insert(end(res.back()), begin(set), end(set));
+                    vector<int> temp;
+                    temp.push_back(nums[i]);
+                    for(int &x : set) temp.push_back(x);
+                    res.push_back(temp);
                 }
         
         return res;
