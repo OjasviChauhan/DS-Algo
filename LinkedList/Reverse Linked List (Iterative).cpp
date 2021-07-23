@@ -31,31 +31,3 @@ public:
         return head;
     }
 };
-
-
-// Another way of writing (PCN Approach)
-
-class Solution {
-public:
-    ListNode* reverseList(ListNode* head) {
-        if(head == NULL or head->next == NULL) return head;
-        ListNode* ans = new ListNode(0);
-        ans->next = head;
-        
-        ListNode* P = ans;
-        ListNode* C = P->next;
-        ListNode* N = C->next;
-        
-        while(N->next != NULL){
-            C->next = N->next;
-            N->next = P->next;
-            P->next = N;
-            N = C->next;
-        }
-        N->next = P->next;
-        P->next = N;
-        C->next = NULL;
-        
-        return ans->next;
-    }
-};
