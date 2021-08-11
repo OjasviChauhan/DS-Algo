@@ -1,5 +1,5 @@
 int findLength(int arr[], int n) {
-    int max_len = 1; // Initialize result
+    int max_len = 1; 
  
     // One by one fix the starting points
     for (int i=0; i<n-1; i++) {
@@ -7,12 +7,10 @@ int findLength(int arr[], int n) {
         // add i'th element to it.
         set<int> myset;
         myset.insert(arr[i]);
- 
-        // Initialize max and min in
-        // current subarray
+
         int mn = arr[i], mx = arr[i];
  
-        // One by one fix ending points
+        // One by one check for ending points
         for (int j=i+1; j<n; j++) {
             // If current element is already
             // in hash set, then this subarray
@@ -36,3 +34,5 @@ int findLength(int arr[], int n) {
     }
     return max_len; 
 }
+
+// Time complexity of the solution is O(N^2)
