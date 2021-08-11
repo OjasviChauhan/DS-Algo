@@ -2,41 +2,42 @@
 
 class Solution {
 public:
-    bool isValid(vector<int> &A, int m,int k,int mid){
-        int t = 0;
-        for(int i=0;i<A.size();i++){
-            if(A[i] <= mid){
-                t++;
-                if(t == k) {
-                    m--;
-                    t = 0;
+    bool check(vector<int> &bloomDay, int mid, int m, int k) {
+        int flowers = 0, bouquets = 0;
+        for(int i = 0; i < bloomDay.size(); i++) {
+            if(bloomDay[i] <= mid){
+                flowers++;
+                if(flowers == k){
+                    bouquets++;
+                    flowers = 0;
                 }
             }
-            else t = 0;
-            if(m <= 0) return true;
+            else flowers = 0;
+            if(bouquets >= m) return true;
         }
         return false;
     }
     
-    int minDays(vector<int>& A, int m, int k) {
-        int n = A.size();
-        if(m*k > n) return -1;
+    int minDays(vector<int>& bloomDay, int m, int k) {
+        int n = bloomDay.size();
+        if(m * k > n) return -1;
         
-        int s = INT_MAX, e = INT_MIN;
-        for(int i=0; i<n; i++){
-            s = min(s, A[i]);
-            e = max(e, A[i]);
+        int start = INT_MAX; 
+        int end = 0;
+        for(int i = 0; i < n; i++){
+            start = min(start, bloomDay[i]);
+            end = max(end, bloomDay[i]);
         }
         
-        int res = -1;
-        while(s <= e){
-            int mid = (s+e)/2;
-            if(isValid(A,m,k,mid)){
-                res = mid;
-                e = mid - 1;
+        int ans;
+        while(start <= end){
+            int mid = start + (end - start)/2;
+            if(check(bloomDay, mid, m, k)){
+                ans = mid;
+                end = mid - 1;
             }
-            else s = mid + 1;
+            else start = mid + 1;
         }
-        return res;
+        return ans;
     }
 };
