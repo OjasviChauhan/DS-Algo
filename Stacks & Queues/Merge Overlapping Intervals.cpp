@@ -11,27 +11,22 @@
 bool compare(Interval a,Interval b){
     return a.start < b.start;
 }
- 
+
 vector<Interval> Solution::merge(vector<Interval> &A) {
-    sort(A.begin(),A.end(),compare);
-    stack<Interval> s;
-    s.push(A[0]);
-    for(int i=1;i<A.size();i++){
-        Interval top = s.top();
-        
-        if(top.end < A[i].start)
-            s.push(A[i]);
-        else if(top.end < A[i].end){
+    sort(A.begin(), A.end(), compare);
+    vector<Interval> ans;
+    ans.push_back(A[0]);
+
+    for(int i = 1; i < A.size(); i++){
+        Interval top = ans.back();
+        if(top.end < A[i].start) {
+            ans.push_back(A[i]);
+        }
+        else if(top.end < A[i].end) {
             top.end = A[i].end;
-            s.pop();
-            s.push(top);
+            ans.pop_back();
+            ans.push_back(top);
         }
     }
-    vector<Interval> v;
-    while(!s.empty()){
-        v.push_back(s.top());
-        s.pop();
-    }
-    sort(v.begin(),v.end(),compare);
-    return v;
+    return ans;
 }
