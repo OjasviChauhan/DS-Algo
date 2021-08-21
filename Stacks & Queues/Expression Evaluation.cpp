@@ -1,14 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define fl(i,a,b) for(int i=a;i<b;i++)
-#define pb push_back
-#define endl '\n'
-#define int long long
-#define ff first
-#define ss second
-#define fast ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
-#define print(v) for(auto x:v){cout<<x<<" ";}cout<<endl;
-int mod = 1000000007;
 
 int precedence(char op) {
     if (op == '+' || op == '-')
@@ -94,7 +85,7 @@ int evaluate(string tokens) {
     return values.top();
 }
 
-int32_t main() {
+int main() {
 
     string s;
     cin >> s;
