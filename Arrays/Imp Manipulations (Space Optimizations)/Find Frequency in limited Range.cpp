@@ -1,5 +1,8 @@
 // https://practice.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/1#
 
+// Time: O(NlogN)
+// Space: O(1)
+
 void frequencyCount(vector<int>& arr,int N, int P)
     { 
         for(int i = 0; i < N; i++){
