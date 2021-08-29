@@ -1,45 +1,34 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-struct compare {                                                // we wrote this user-defined compare function because we had to  
-    bool operator()(                                            // make min-heap and we had to compare linkedlist values which 
-        struct ListNode* a, struct ListNode* b)                 // priority-queue STL can not do on its own.
-    { 
-        return a->val > b->val; 
-    } 
-}; 
- 
-ListNode* Solution::mergeKLists(vector<ListNode*> &A) {
-    int k = A.size();
-    struct ListNode *head=NULL, *last;
-    
-    priority_queue<ListNode*, vector<ListNode*>, compare> pq;   // Initialising Priority Queue (min-heap)
-    
-    for (int i = 0; i < k; i++) 
-        if (A[i] != NULL) 
-            pq.push(A[i]);                          // Pushing starting values of each linkedlist in pq
-            
-    while (!pq.empty()) { 
-        struct ListNode* top = pq.top();            // Storing top value which would me minimum everytime.
-        pq.pop();                                   // Removing that top value after storing
+// https://leetcode.com/problems/merge-k-sorted-lists/
 
-        if (top->next != NULL) 
-            pq.push(top->next);                     // After poping, we'll push the next node of previous popped node
-                                                    // and it will automatically get adjust in pq according to its value. 
-        if (head == NULL) { 
-            head = top;                             // This will run only first time and it will put the first popped
-            last = top;                             // element into the Head's value.
-        } 
-  
-        else { 
-            last->next = top;                       // And now this will keep producing linkedlist in sorted manner.
-            last = top; 
-        } 
-    } 
-    return head; 
-}
+typedef pair<int, ListNode*> pi;
+
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if(lists.size() == 0) return {};
+        priority_queue<pi, vector<pi>, greater<pi>> pq;
+        ListNode* ans = new ListNode();
+        
+        for(int r = 0; r < lists.size(); r++) {
+            ListNode* list = lists[r];
+            if(list) pq.push({list->val, list});
+        }
+        
+        ListNode* res = ans;
+        while(!pq.empty()) {
+            pi top = pq.top();
+            pq.pop();
+            int data = top.first;
+            ListNode* t = top.second;
+            
+            res->next = new ListNode(data);
+            if(t->next){
+                t = t->next;
+                pq.push({t->val, t});
+            }
+            res = res->next;
+        }
+        
+        return ans->next;
+    }
+};
