@@ -19,9 +19,7 @@ public:
         vector<vector<pair<int,int>>> g(n);
         
         for(vector<int> x : roads) {
-            int u = x[0];
-            int v = x[1];
-            int wt = x[2];
+            int u = x[0], v = x[1], wt = x[2];
             g[u].push_back({v, wt});
             g[v].push_back({u, wt});
         }
