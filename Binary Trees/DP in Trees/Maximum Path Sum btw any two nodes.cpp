@@ -11,22 +11,25 @@
  */
 class Solution {
 public:
-    int solve(TreeNode* root, int &res){
+    int sum(TreeNode* root, int &ans) {
         if(!root) return 0;
         
-        int l = solve(root->left,res);
-        int r = solve(root->right,res);
+        // we will not consider -ve sum coming from left sub tree while 
+        // backtracking, rather we will take nothing i.e. 0 from there.
+        int ls = max(0, sum(root->left, ans));
+        int rs = max(0, sum(root->right, ans));
         
-        int temp = max(max(l,r)+root->val, root->val);
-        int ans = max(temp, l+r+root->val);
-        res = max(res,ans);
+        // update ans if umbrella shaped path is larger than current ans
+        ans = max(ans, root->val + ls + rs);
         
-        return temp;
+        // return maximum of both the sums to ensure the maximum path for 
+        // upper nodes so that always maximum path could be taken.
+        return root->val + max(ls, rs);
     }
     
     int maxPathSum(TreeNode* root) {
-        int res = -1001;
-        solve(root,res);
-        return res;
+        int ans = INT_MIN;
+        sum(root, ans);
+        return ans;
     }
 };
