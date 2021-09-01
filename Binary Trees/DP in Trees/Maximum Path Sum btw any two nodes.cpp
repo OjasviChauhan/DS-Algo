@@ -14,8 +14,8 @@ public:
     int sum(TreeNode* root, int &ans) {
         if(!root) return 0;
         
-        // we will not consider -ve sum coming from left sub tree while 
-        // backtracking, rather we will take nothing i.e. 0 from there.
+        // we will not consider -ve sum coming back from left or right
+        // sub tree, because that will always lead to smaller path sum.
         int ls = max(0, sum(root->left, ans));
         int rs = max(0, sum(root->right, ans));
         
