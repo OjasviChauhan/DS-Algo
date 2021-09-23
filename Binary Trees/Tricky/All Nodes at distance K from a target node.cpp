@@ -1,71 +1,65 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+// https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+
 class Solution {
-private:
-    vector<int> v;
 public:
-    void printKlevel(TreeNode* root, int k){
-        if(!root or k<0){
-            return;
-        }
-        if(k==0){
-            v.push_back(root->val);
-        }
-        printKlevel(root->left, k-1);
-        printKlevel(root->right, k-1);
-    }
+    vector<int> ans;
+    unordered_map<TreeNode*, TreeNode*> par;
     
-    // Prints all nodes at distance k from a given target node. 
-    // The k distant nodes may be upward or downward. This function 
-    // returns distance of root from target node, it returns -1 if  
-    // target node is not present in tree rooted with root.
-    int solve(TreeNode* root, TreeNode* target, int k){
-        if(!root){
-            return -1;
-        }
-        if(root == target){
-            printKlevel(root,k);
-            return 0;
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {    
+        queue<TreeNode*> q;
+        
+        q.push(root);
+        par[root] = NULL;
+        
+        while(!q.empty()) {
+            auto t = q.front();
+            q.pop();
+            
+            if(t->left){
+                par[t->left] = t;
+                q.push(t->left);
+            }
+            if(t->right) {
+                par[t->right] = t;
+                q.push(t->right);
+            }
         }
         
-        // For left subtree
-        int dl = solve(root->left, target, k);
-        if(dl != -1){
-            // if root is itself at k distance from target
-            if(dl+1 == k)  
-                v.push_back(root->val);
-            
-            // Else go to right subtree and print all k-dl-2 distant nodes
-            else        
-                printKlevel(root->right, k-dl-2);
-            
-            return 1 + dl;
-        }
+        int dist = 0;
+        unordered_map<TreeNode*, int> vis;
+        queue<TreeNode*> Q;
+        Q.push(target);
+        vis[target] = 1;
         
-        // For Mirror tree in right
-        int dr = solve(root->right, target, k);
-        if(dr != -1){
-            if(dr+1 == k)
-                v.push_back(root->val);
-            else
-                printKlevel(root->left, k-dr-2);
+        while(!Q.empty()) {
             
-            return 1 + dr;
+            if(dist == k) {
+                while(!Q.empty()){
+                    ans.push_back(Q.front()->val);
+                    Q.pop();
+                }
+            }
+
+            int sz = Q.size();
+            for(int i = 0; i < sz; i++) {
+                auto t = Q.front();
+                Q.pop();
+                
+                if(t->left and !vis[t->left]) {
+                    Q.push(t->left);
+                    vis[t->left] = 1;
+                }
+                if(t->right and !vis[t->right]) {
+                    Q.push(t->right);
+                    vis[t->right] = 1;
+                }
+                if(par[t] and !vis[par[t]]){
+                    Q.push(par[t]);
+                    vis[par[t]] = 1;
+                }
+            }
+            dist++;
         }
-        
-        // if target is neither present in left subtree nor in right subtree.
-        return -1;
-    }
-    
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        solve(root,target,k);
-        return v;
+        return ans;
     }
 };
