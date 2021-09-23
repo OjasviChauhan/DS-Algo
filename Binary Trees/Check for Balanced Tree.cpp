@@ -4,7 +4,7 @@ int height(Node* root){
     int lh = height(root->left);
     int rh = height(root->right);
         
-    if(abs(lh - rH) > 1) ans = false;
+    if(abs(lh - rh) > 1) ans = false;
         
     return max(lh, rh) + 1;
 }
