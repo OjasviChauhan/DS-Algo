@@ -1,12 +1,12 @@
 bool ans;
 int height(Node* root){
     if(root==NULL) return 0;
-    int lHeight = height(root->left);
-    int rHeight = height(root->right);
+    int lh = height(root->left);
+    int rh = height(root->right);
         
-    if(abs(lHeight - rHeight) > 1) ans = false;
+    if(abs(lh - rH) > 1) ans = false;
         
-    return max(lHeight,rHeight) + 1;
+    return max(lh, rh) + 1;
 }
 
 bool isBalanced(Node *root)
