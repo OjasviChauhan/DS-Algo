@@ -28,3 +28,28 @@ public:
         return v;
     }
 };
+
+// SOLUTION 2
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        if(!root) return ans;
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty()) {
+            int sz = q.size();
+            for(int i = 0; i < sz; i++) {
+                auto t = q.front();
+                q.pop();
+                if(t->left) q.push(t->left);
+                if(t->right) q.push(t->right);
+                if(i == sz - 1) 
+                    ans.push_back(t->val);
+            }
+        }
+        return ans;
+    }
+};
